@@ -34,7 +34,7 @@ public class GitHubWebTests extends TestBase {
     }
 
     @Test
-    @Disabled("With some reason")
+    //@Disabled("With some reason")
     @Story("Search from main Page")
     @Tags({@Tag("web"), @Tag("minor")})
     @DisplayName("Search selenoid in Community forum")

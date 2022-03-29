@@ -1,5 +1,6 @@
 package com.azovcevae.tests.github;
 
+import com.azovcevae.helper.TestBase;
 import com.azovcevae.pages.GitHubSteps;
 import com.azovcevae.pages.Layer;
 import com.codeborne.selenide.Condition;
@@ -8,6 +9,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
@@ -15,9 +17,8 @@ import static org.openqa.selenium.By.linkText;
 @Layer("UI")
 @Owner("eazovtseva")
 @Feature("GitHub")
-public class GitHubWebTests {
+public class GitHubWebTests extends TestBase {
     private static final String REPOSITORY = "eroshenkoam/allure-example";
-    private static final String BASEURL = "https://github.com";
 
     @Test
     @Story("Search from main Page")
@@ -39,7 +40,7 @@ public class GitHubWebTests {
     @DisplayName("Search selenoid in Community forum")
     public void testSelenoidPostSearch() {
         step("Перейти на главную страницу", () -> {
-            open(BASEURL);
+            open(baseUrl);
         });
         step("Открываем пункт меню Explore", () -> {
             $x("//summary[text()[normalize-space()='Explore']]").hover();
@@ -63,7 +64,7 @@ public class GitHubWebTests {
     @DisplayName("Open Team page")
     public void testGoToTeamPage() {
         step("Перейти на главную страницу", () -> {
-            open(BASEURL);
+            open(baseUrl);
         });
         step("Нажать на ссылку Team в меню", () -> {
             $(linkText("Team")).click();
@@ -79,7 +80,7 @@ public class GitHubWebTests {
     @DisplayName("Check SignUpForFree button")
     public void testSignUpForFreeTeamPage() {
         step("Перейти на главную страницу", () -> {
-            open(BASEURL);
+            open(baseUrl);
         });
         step("Нажать на ссылку Team в меню", () -> {
             $(linkText("Team")).click();
@@ -98,7 +99,7 @@ public class GitHubWebTests {
     @DisplayName("Check Create your account button")
     public void testContinueWithTeamOnTeamPage() {
         step("Перейти на главную страницу", () -> {
-            open(BASEURL);
+            open(baseUrl);
         });
         step("Нажать на ссылку Team в меню", () -> {
             $(linkText("Team")).click();
@@ -114,7 +115,7 @@ public class GitHubWebTests {
     @Test
     public void testContactSalesOnMainPage() {
         step("Перейти на главную страницу", () -> {
-            open(BASEURL);
+            open(baseUrl);
         });
         step("Нажать на кнопку «ContactSales»", () -> {
             $(".btn-subtle-mktg").scrollIntoView(true).click();
